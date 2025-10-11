@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>DALI Model</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="generic.html" class="active">Generic</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">DALI</h1>
+							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+							<a href="documents/DALI_Paper.pdf" class="button primary icon solid fa-file" target="_blank">Final Paper</a>
+							<a href="https://github.com/ElijahSherman/MedTranslate_DALI" class="button primary icon solid fa-code" target="_blank">GitHub Repository</a>
+
+							<p></p>
+							<h2>Abstract</h2>
+							<p>Machine Translation (MT) for low-resource languages such as isiXhosa is challenging in specialised domains such as medicine. 
+								Domain adaptation by lexicon induction (DALI) is a method for creating synthetic parallel corpora for low resource languages in a
+								specific domain. This is done by word-for-word back-translating a monolingual corpus of data using a bilingual lexicon. DALI achieved 
+								performance gains in adapting MT models to specific domains in the initial study introducing the technique. However, it has not 
+								been tested in a truly low-resource setting such as isiXhosa medical. This project tests the efficacy of DALI generated synthetic 
+								data for fine-tuning models for English-isiXhosa MT in the medical domain. The results of the experiments done indicate that 
+								DALI does not improve medical domain translation for isiXhosa. For Eng→Xho translation the baseline model outperforms all the 
+								fine-tuned models, while for Xho→Eng translation the fine-tuned models marginally outperform the baseline model. These models 
+								were also compared to others trained by team-mates. The models fine-tuned using back-translated synthetic data significantly 
+								outperformed the DALI models in both translation directions. This could be because DALI is not suitable for truly low-resource 
+								languages such as isiXhosa and requires a higher quality lexicon, with a larger vocabulary to perform better. The health term error 
+								rate was calculated across various categories which shows the lexicon may not be of a high enough quality, as the baseline typically 
+								outperformed the fine-tuned models in all categories.</p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
