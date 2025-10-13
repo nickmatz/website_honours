@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
+				<a href="index.html" class="title">IsiXhosa Medical Machine Translation</a>
 				<nav>
 					<ul>
 						<li><a href="index.html">Home</a></li>
@@ -32,13 +32,18 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">DALI</h1>
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+							<!-- Restructured Header Block -->
+							<header class="major">
+								<h1>DALI</h1>
+								<p style="font-size: 1.2em; color: #aaa; margin-top: -1em; margin-bottom: 2em;">by Elijah Sherman</p>
+								<h1 class="major"></h1>
+							</header>
 							<a href="documents/DALI_Paper.pdf" class="button primary icon solid fa-file" target="_blank">Final Paper</a>
+							<a href="documents/Elijah_Lit_Review.pdf" class="button primary icon solid fa-file" target="_blank">Literature Review</a>
 							<a href="https://github.com/ElijahSherman/MedTranslate_DALI" class="button primary icon solid fa-code" target="_blank">GitHub Repository</a>
 
 							<p></p>
-							<h2>Abstract</h2>
+							<h2>Overview</h2>
 							<p>Machine Translation (MT) for low-resource languages such as isiXhosa is challenging in specialised domains such as medicine. 
 								Domain adaptation by lexicon induction (DALI) is a method for creating synthetic parallel corpora for low resource languages in a
 								specific domain. This is done by word-for-word back-translating a monolingual corpus of data using a bilingual lexicon. DALI achieved 
@@ -46,12 +51,29 @@
 								been tested in a truly low-resource setting such as isiXhosa medical. This project tests the efficacy of DALI generated synthetic 
 								data for fine-tuning models for English-isiXhosa MT in the medical domain. The results of the experiments done indicate that 
 								DALI does not improve medical domain translation for isiXhosa. For Eng→Xho translation the baseline model outperforms all the 
-								fine-tuned models, while for Xho→Eng translation the fine-tuned models marginally outperform the baseline model. These models 
-								were also compared to others trained by team-mates. The models fine-tuned using back-translated synthetic data significantly 
-								outperformed the DALI models in both translation directions. This could be because DALI is not suitable for truly low-resource 
+								fine-tuned models, while for Xho→Eng translation the fine-tuned models marginally outperform the baseline model. This could be 
+								because DALI is not suitable for truly low-resource 
 								languages such as isiXhosa and requires a higher quality lexicon, with a larger vocabulary to perform better. The health term error 
 								rate was calculated across various categories which shows the lexicon may not be of a high enough quality, as the baseline typically 
 								outperformed the fine-tuned models in all categories.</p>
+								<p>The original DALI paper by Hu et al. can be found <a href="https://arxiv.org/pdf/1906.00376" target="_blank">here</a></p>
+
+							<h2>Methodology</h2>
+							<p>DALI works by taking an in-domain monolingual corpus and word-for-word back-translating it using a bilingual lexicon that is generated from a large
+								general domain corpus of data and an in-domain dictionary of key words. This synthetic data can then be paired with the original corpus
+								to be used as a pseudo-parallel corpus of training data.
+							</p>
+							<p>In this project I used the English-isiXhosa subset of the WMT22 corpus to generate the seed lexixon using the fast-align tool.
+								I then added the Blocker medical dictionary to this seed lexicon to adapt it to the medical domain. Using this bilingual lexicon
+								I word-for-word back-translated the PriMock47 dataset (a set of 47 mock docter-patient consultations) into isiXhosa. The real
+								PriMock47 and the synthetic PriMock47 can now be used as a pseudo-parallel corpus of data for training machine translation models.		
+							</p>
+							<!-- Wrapper div to control alignment and sizing -->
+							<div style="text-align: center;">
+								<a href="images/DALI_Diagram-Overall DALI Process.jpg" class="image" style="display: inline-block; width: 75%;">
+									<img src="images/DALI_Diagram-Overall DALI Process.jpg" alt="DALI Process Diagram" style="display: block; width: 100%;" />
+								</a>
+							</div>
 						</div>
 					</section>
 
