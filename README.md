@@ -1,2 +1,0 @@
-# website_honours
-yurt

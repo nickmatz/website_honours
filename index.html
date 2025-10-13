@@ -115,6 +115,9 @@
 					<p>The following graph shows the BLEU score results of all of our top performing models on the Blocker evaluation set. This is done to show how
 						each approach compares to the others.
 					</p>
+					<a href="images/Results_Graph.png" class="image" style="display: block; width: 75%; margin: auto;">
+						<img src="images/Results_Graph.png" alt="Overall results graph" style="display: block; width: 100%;" />
+					</a>
 				</div>
 			</section>
 
@@ -133,11 +136,56 @@
 			<section id="conclusions" class="wrapper style1 fade-up">
 				<div class="inner">
 					<h2>Conclusions</h2>
-					<p>This section will summarize the findings of the project and discuss the implications for medical machine translation in isiXhosa.</p>
+					<p>Generating synthetic data through back-translation has shown to be the most effective approach explored in this project to fine-tuning
+						NLLB-200. This is shown in the results as it vastly outperforms the baselines as well as the best performing DALI models. While the models
+						trained on DALI generated data had moderate performance gains when translation from isiXhosa→English the results were not significant enough
+						to show DALI as effective for generating synthetic data for this purpose. This is likely due to the low quality of the lexicon used during
+						word-for-word back-translation. The baseline model that was trained from scratch outperfomed the fine-tuned NLLB baseline model likely because
+						the fine-tuned baseline was getting confused with certain words, lowering the translation quality.
+					</p>
 				</div>
 			</section>
 
 		</div>
+
+		<!-- Footer -->
+		<footer id="footer" class="wrapper alt" style="background-color: #aa558e;">  <!-- Lighter background color added here -->
+
+			<!-- Added padding to make the container bigger -->
+			<div class="container" style="padding: 1.5em 0;">
+
+				<div class="footer-content" style="display: flex; justify-content: space-between; align-items: center; gap: 2em;">
+					
+					<div class="logo-container">
+						<img alt="uct logo" width="100" src="images/uct-logo.png">
+					</div>
+
+					<div class="text">
+						<b>University of Cape Town</b> <br>
+						Department of Computer Science <br>
+						Email: <a href="mailto:dept@cs.uct.ac.za">dept@cs.uct.ac.za</a>
+					</div>
+
+					<div class="text">
+						<b>Team Members</b> <br>
+						<a href="mailto:mtznic006@myuct.ac.za">Nick Matzopoulos</a> <br>
+						<a href="mailto:shreli006@myuct.ac.za">Elijah Sherman</a> <br>
+						<a href="mailto:mkhmal024@myuct.ac.za">Malibongwe Makhonza</a> <br> <br>
+						Design by <a href="https://html5up.net">HTML5 UP</a>
+					</div>
+
+					<div class="text">
+						<b>Supervisor</b> <br>
+						<a href="mailto:francois.meyer@uct.ac.za">Francois Meyer</a>
+					</div>
+
+					<div class="logo-container">
+						<img alt="cs logo" width="100" src="images/cs-logo.png">
+					</div>
+					
+				</div>
+			</div>
+		</footer>
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
