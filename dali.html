@@ -39,7 +39,7 @@
 
 							<p></p>
 							<h2>Overview</h2>
-							<p>Machine Translation (MT) for low-resource languages such as isiXhosa is challenging in specialised domains such as medicine. 
+							<p style="text-align: justify">Machine Translation (MT) for low-resource languages such as isiXhosa is challenging in specialised domains such as medicine. 
 								Domain adaptation by lexicon induction (DALI) is a method for creating synthetic parallel corpora for low resource languages in a
 								specific domain. This is done by word-for-word back-translating a monolingual corpus of data using a bilingual lexicon. DALI achieved 
 								performance gains in adapting MT models to specific domains in the initial study introducing the technique. However, it has not 
@@ -54,7 +54,7 @@
 
 							<h2>Methodology</h2>
 							<h3>Data Generation</h3>
-							<p>DALI works by taking an in-domain monolingual corpus and word-for-word back-translating it using a bilingual lexicon that is generated from a large
+							<p style="text-align: justify">DALI works by taking an in-domain monolingual corpus and word-for-word back-translating it using a bilingual lexicon that is generated from a large
 								general domain corpus of data and an in-domain dictionary of key words. This synthetic data can then be paired with the original corpus
 								to be used as a pseudo-parallel corpus of training data.
 							</p>
@@ -76,7 +76,7 @@
 							</div>
 
 							<h3>Model Training</h3>
-							<p>A hyperparameter search was performed to find the optimal set of hyperparameters to use for fine-tuning NLLB-200 on the synthetic
+							<p style="text-align: justify">A hyperparameter search was performed to find the optimal set of hyperparameters to use for fine-tuning NLLB-200 on the synthetic
 								data. The models trained during this search were validated on the Flores-200 and MeMaT medical validation sets to fine-tune the 
 								hyperparameters. These two datasets were chosen to validate the models on both general domain and medical domain data to see how they
 								performed in each. The top performing models on each validation set in each translation direction were chosen to evaluate on the 
@@ -84,7 +84,7 @@
 							</p>
 
 							<h2>Results</h2>
-							<p>The models were evaluated using the standard machine translation evaluation metrics, BLEU, chrF and chrF++. A full
+							<p style="text-align: justify">The models were evaluated using the standard machine translation evaluation metrics, BLEU, chrF and chrF++. A full
 								explanation of these metrics can be found in section 4.4.1 of my <a href="documents/DALI_Paper.pdf">final paper</a>.
 								The table below presents the results of the best performing models in both translation directions on the Blocker evaluation
 								dataset. The best results for each direction in each metric are highlighted in bold. This shows that for English→isiXhosa
@@ -95,8 +95,6 @@
 								<table>
 									<thead>
 										<tr>
-											<th rowspan="2">Model Base</th>
-											<th rowspan="2">Set</th>
 											<th rowspan="2">Model</th>
 											<th colspan="3">English → isiXhosa</th>
 											<th colspan="3">isiXhosa → English</th>
@@ -112,8 +110,6 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td rowspan="3"><strong>NLLB 600M</strong></td>
-											<td rowspan="3">Blocker Evaluation Dataset</td>
 											<td>MeMaT-Best</td>
 											<td>9.61</td>
 											<td>47.57</td>
@@ -146,12 +142,12 @@
 								</table>
 							</div>
 							<h3>Analysis</h3>
-							<p>These results show that the DALI generated data was not effective at fine-tuning NLLB-200 for English→isiXhosa since the
+							<p style="text-align: justify">These results show that the DALI generated data was not effective at fine-tuning NLLB-200 for English→isiXhosa since the
 								baseline outperforms the fine-tuned models in all metrics. Even though for isiXhosa→English translation the FLORES-Best model
 								outperforms the baseline, it is only a marginal increase which is likely because it is easier for the model to generate English
 								than to generate isiXhosa because NLLB has been trained on much more English data. 
 							</p>
-							<p>
+							<p style="text-align: justify">
 								The lack of any major performance improvements are an indicator that the synthetic data generated is not of a high enough quality
 								for training machine translation models. This low-quality is likely due to the low quality of the bilingual lexicon used during
 								word-for-word back-translation.
@@ -166,7 +162,7 @@
 								</div>
 								<p></p>
 							<h2>Conclusion</h2>
-							<p>This project investigated efficacy of the DALI process for fine-tuning NLLB-200 for the isiXhosa medical domain. 
+							<p style="text-align: justify">This project investigated efficacy of the DALI process for fine-tuning NLLB-200 for the isiXhosa medical domain. 
 								The results of the experiments indicate that DALI-generated data is ineffective for this purpose. For Eng→Xho 
 								translation, the fine-tuned models underperformed the NLLB baseline, while for Xho→Eng translation there were only 
 								marginal performance gains. These outcomes indicate that the synthetic data lacks the grammatical and semantic 
@@ -174,7 +170,7 @@
 								in the DALI pipeline.</p>
 
 							<h2>Contact Details</h2>
-							<p>Contact Elijah Sherman at <a href="mailto:shreli006@myuct.ac.za">shreli006@myuct.ac.za</a>. <br>
+							<p style="text-align: justify">Contact Elijah Sherman at <a href="mailto:shreli006@myuct.ac.za">shreli006@myuct.ac.za</a> <br>
 							Contact the project supervisor Francois Meyer at <a href="mailto:francois.meyer@uct.ac.za">francois.meyer@uct.ac.za</a></p>
 						</div>
 					</section>
