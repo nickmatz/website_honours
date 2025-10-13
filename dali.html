@@ -20,8 +20,6 @@
 				<nav>
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -32,11 +30,12 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<!-- Restructured Header Block -->
-							<h1 class="major">DALI</h1>
-							<a href="documents/DALI_Paper.pdf" class="button primary icon solid fa-file" target="_blank">Final Paper</a>
-							<a href="documents/Elijah_Lit_Review.pdf" class="button primary icon solid fa-file" target="_blank">Literature Review</a>
-							<a href="https://github.com/ElijahSherman/MedTranslate_DALI" class="button primary icon solid fa-code" target="_blank">GitHub Repository</a>
+							<!-- Revert to this simple structure -->
+							<h1>DALI</h1>
+							<p></p>
+							<p style="font-size: 1.2em; color: #aaa; margin-top: -2.5em; margin-bottom: 2em;">by Elijah Sherman</p>
+							<h1 class="major"></h1>
+							
 
 							<p></p>
 							<h2>Overview</h2>
@@ -52,27 +51,46 @@
 								languages such as isiXhosa and requires a higher quality lexicon, with a larger vocabulary to perform better. The health term error 
 								rate was calculated across various categories which shows the lexicon may not be of a high enough quality, as the baseline typically 
 								outperformed the fine-tuned models in all categories.</p>
-								<p>The original DALI paper by Hu et al. can be found <a href="https://arxiv.org/pdf/1906.00376" target="_blank">here</a></p>
 
 							<h2>Methodology</h2>
+							<h3>Data Generation</h3>
 							<p>DALI works by taking an in-domain monolingual corpus and word-for-word back-translating it using a bilingual lexicon that is generated from a large
 								general domain corpus of data and an in-domain dictionary of key words. This synthetic data can then be paired with the original corpus
 								to be used as a pseudo-parallel corpus of training data.
 							</p>
-							<p>In this project I used the English-isiXhosa subset of the WMT22 corpus to generate the seed lexixon using the fast-align tool.
-								I then added the Blocker medical dictionary to this seed lexicon to adapt it to the medical domain. Using this bilingual lexicon
-								I word-for-word back-translated the PriMock47 dataset (a set of 47 mock docter-patient consultations) into isiXhosa. The real
-								PriMock47 and the synthetic PriMock47 can now be used as a pseudo-parallel corpus of data for training machine translation models.		
-							</p>
+							
 							<!-- Wrapper div to control alignment and sizing -->
-							<div style="text-align: center;">
-								<a href="images/DALI_Diagram-Overall DALI Process.jpg" class="image" style="display: inline-block; width: 75%;">
+							<div class="split style1">
+								<section>
+									<a href="images/DALI_Diagram-Overall DALI Process.jpg" class="image" style="display: block; width: 75%;">
 									<img src="images/DALI_Diagram-Overall DALI Process.jpg" alt="DALI Process Diagram" style="display: block; width: 100%;" />
-								</a>
+									</a>
+								</section>
+								<section>
+									<p>In this project I used the English-isiXhosa subset of the WMT22 corpus to generate the seed lexicon using the fast-align tool.
+										I then added the Blocker medical dictionary to this seed lexicon to adapt it to the medical domain. Using this bilingual lexicon
+										I word-for-word back-translated the PriMock47 dataset (a set of 47 mock docter-patient consultations) into isiXhosa. The real
+										PriMock47 and the synthetic PriMock47 can now be used as a pseudo-parallel corpus of data for training machine translation models.		
+									</p>
+								</section>
 							</div>
 
+							<h3>Model Training</h3>
+							<p>A hyperparameter search was performed to find the optimal set of hyperparameters to use for fine-tuning NLLB-200 on the synthetic
+								data. The models trained during this search were validated on the Flores-200 and MeMaT medical validation sets to fine-tune the 
+								hyperparameters. These two datasets were chosen to validate the models on both general domain and medical domain data to see how they
+								performed in each. The top performing models on each validation set in each translation direction were chosen to evaluate on the 
+								Blocker evaluation set.
+							</p>
+
 							<h2>Results</h2>
-							<p></p>
+							<p>The models were evaluated using the standard machine translation evaluation metrics, BLEU, chrF and chrF++. A full
+								explanation of these metrics can be found in section 4.4.1 of my <a href="documents/DALI_Paper.pdf">final paper</a>.
+								The table below presents the results of the best performing models in both translation directions on the Blocker evaluation
+								dataset. The best results for each direction in each metric are highlighted in bold. This shows that for English→isiXhosa
+								translation, the baseline NLLB-200 model outperforms the fine-tuned models but for isiXhosa→English translation the FLORES-Best
+								model performs the best with an improvement over the baseline of 1.11 in BLEU score.
+							</p>
 							<div class="table-wrapper">
 								<table>
 									<thead>
@@ -87,7 +105,7 @@
 											<th>BLEU</th>
 											<th>chrF</th>
 											<th>chrF++</th>
-											<th>BLEU++</th>
+											<th>BLEU</th>
 											<th>chrF</th>
 											<th>chrF++</th>
 										</tr>
@@ -127,19 +145,42 @@
 									</tbody>
 								</table>
 							</div>
+							<h3>Analysis</h3>
+							<p>These results show that the DALI generated data was not effective at fine-tuning NLLB-200 for English→isiXhosa since the
+								baseline outperforms the fine-tuned models in all metrics. Even though for isiXhosa→English translation the FLORES-Best model
+								outperforms the baseline, it is only a marginal increase which is likely because it is easier for the model to generate English
+								than to generate isiXhosa because NLLB has been trained on much more English data. 
+							</p>
+							<p>
+								The lack of any major performance improvements are an indicator that the synthetic data generated is not of a high enough quality
+								for training machine translation models. This low-quality is likely due to the low quality of the bilingual lexicon used during
+								word-for-word back-translation.
+							</p>
+
+							<h2>Resources</h2>
+								<div style="display: flex; gap: 1em;">
+									<a href="documents/DALI_Paper.pdf" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View paper">Final Paper</a>
+									<a href="https://arxiv.org/pdf/1906.00376" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View paper">DALI Paper</a>
+									<a href="documents/Elijah_Lit_Review.pdf" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View literature review">Literature Review</a>
+									<a href="https://github.com/ElijahSherman/MedTranslate_DALI" class="button primary icon brands fa-github" target="_blank" style="flex: 1;" alt="View code on GitHub">GitHub</a>
+								</div>
+								<p></p>
+							<h2>Conclusion</h2>
+							<p>This project investigated efficacy of the DALI process for fine-tuning NLLB-200 for the isiXhosa medical domain. 
+								The results of the experiments indicate that DALI-generated data is ineffective for this purpose. For Eng→Xho 
+								translation, the fine-tuned models underperformed the NLLB baseline, while for Xho→Eng translation there were only 
+								marginal performance gains. These outcomes indicate that the synthetic data lacks the grammatical and semantic 
+								knowledge required for effective fine-tuning. This is caused by the word-for-word back-translation process followed 
+								in the DALI pipeline.</p>
+
+							<h2>Contact Details</h2>
+							<p>Contact Elijah Sherman at <a href="mailto:shreli006@myuct.ac.za">shreli006@myuct.ac.za</a>. <br>
+							Contact the project supervisor Francois Meyer at <a href="mailto:francois.meyer@uct.ac.za">francois.meyer@uct.ac.za</a></p>
 						</div>
 					</section>
 
 			</div>
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
