@@ -15,148 +15,185 @@
 	<body class="is-preload">
 
 		<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="title">IsiXhosa Medical MT</a>
-				<nav>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-					</ul>
-				</nav>
-			</header>
+		<header id="header">
+			<a href="index.html" class="title">IsiXhosa Medical Machine Translation</a>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+				</ul>
+			</nav>
+		</header>
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Main -->
-					<section id="main" class="wrapper">
-						<div class="inner">
-							<h1 class="major">Baseline Models: Transformer and NLLB-200</h1>
+			<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<h1>Baseline Models: Transformer and NLLB-200</h1>
+					<p style="font-size: 1.2em; color: #aaa; margin-top: -1.5em; margin-bottom: 2em;">by Malibongwe Makhonza</p>
 
-							<h2>Overview</h2>
-							<p>Baseline models serve as the foundation for evaluating improvements introduced by synthetic data generation methods such as DALI and Back-Translation. This section compares two baseline systems designed for English–isiXhosa medical translation: 
-							a <strong>Transformer model trained from scratch</strong> and a <strong>fine-tuned multilingual model (NLLB-200)</strong>. Both were evaluated across general and medical domain datasets to assess how different training strategies affect translation quality.</p>
+					<h2>Overview</h2>
+					<p style="text-align: justify;">
+						Baseline models form the foundation for evaluating improvements introduced by synthetic data generation
+						methods such as DALI and Back-Translation. This section compares two baseline systems designed for
+						English–isiXhosa medical translation: a <strong>Transformer model trained from scratch</strong> and a
+						<strong>fine-tuned multilingual model (NLLB-200)</strong>. Both were evaluated across general and medical
+						domain datasets to assess how different training strategies affect translation quality.
+					</p>
 
-							<hr />
+					<h2>Our Approach</h2>
+					<p style="text-align: justify;">
+						The <strong>Transformer baseline</strong> was trained entirely from scratch on the <strong>WMT22</strong>
+						dataset, using approximately 8 million general-domain sentence pairs. This approach learns isiXhosa
+						linguistic structures directly, without prior multilingual knowledge.
+					</p>
+					<p style="text-align: justify;">
+						The <strong>NLLB-200 baseline</strong> leveraged transfer learning by fine-tuning a pre-trained multilingual
+						model on the same WMT22 dataset. The goal was to test whether cross-lingual knowledge from other African and
+						low-resource languages could improve translation quality for isiXhosa medical text.
+					</p>
+					<p style="text-align: justify;">
+						Both baselines were evaluated on three datasets: <strong>FLORES-200 (general domain)</strong>,
+						<strong>MeMaT (medical validation)</strong>, and <strong>Blocker (medical test set)</strong>. Metrics used
+						included BLEU, chrF, and chrF++.
+					</p>
 
-							<h2>Our Approach</h2>
-							<p>The <strong>Transformer baseline</strong> was trained entirely from scratch on the <strong>WMT22</strong> dataset, using approximately 8 million general-domain sentence pairs. This approach learns isiXhosa linguistic structures directly, without prior multilingual knowledge.</p>
-							<p>The <strong>NLLB-200 baseline</strong> leveraged transfer learning by fine-tuning a pre-trained multilingual model on the same WMT22 dataset. The aim was to test whether cross-lingual knowledge from other African and low-resource languages could improve translation quality for isiXhosa medical text.</p>
-							<p>Both baselines were evaluated on three datasets: <strong>FLORES-200 (general domain)</strong>, <strong>MeMaT (medical validation)</strong>, and <strong>Blocker (medical test set)</strong>. Metrics used included BLEU, chrF, and chrF++.</p>
+					<h2>Results</h2>
+					<p style="text-align: justify;">
+						The table below presents comparative results for the Transformer and NLLB-200 models across all datasets and
+						translation directions (English→isiXhosa and isiXhosa→English). These scores serve as reference points for
+						evaluating the performance of domain-adapted models.
+					</p>
 
-							<hr />
+					<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th rowspan="2">Dataset</th>
+									<th rowspan="2">Model</th>
+									<th colspan="3">English → isiXhosa</th>
+									<th colspan="3">isiXhosa → English</th>
+								</tr>
+								<tr>
+									<th>BLEU</th>
+									<th>chrF</th>
+									<th>chrF++</th>
+									<th>BLEU</th>
+									<th>chrF</th>
+									<th>chrF++</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="2"><strong>FLORES-200</strong></td>
+									<td>Transformer (Scratch)</td>
+									<td>15.0</td>
+									<td>37.2</td>
+									<td>38.5</td>
+									<td><strong>26.9</strong></td>
+									<td><strong>47.7</strong></td>
+									<td><strong>49.3</strong></td>
+								</tr>
+								<tr>
+									<td>NLLB-200 (Fine-tuned)</td>
+									<td><strong>15.2</strong></td>
+									<td><strong>38.1</strong></td>
+									<td><strong>39.4</strong></td>
+									<td>21.1</td>
+									<td>44.3</td>
+									<td>45.8</td>
+								</tr>
 
-							<h2>Results</h2>
-							<p>The table below presents comparative results for the Transformer and NLLB-200 models across all datasets and translation directions (English→isiXhosa and isiXhosa→English). These scores serve as reference points for evaluating the performance of domain-adapted models.</p>
-							
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th rowspan="2">Dataset</th>
-											<th rowspan="2">Model</th>
-											<th colspan="3">English → isiXhosa</th>
-											<th colspan="3">isiXhosa → English</th>
-										</tr>
-										<tr>
-											<th>BLEU</th>
-											<th>chrF</th>
-											<th>chrF++</th>
-											<th>BLEU</th>
-											<th>chrF</th>
-											<th>chrF++</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td rowspan="2"><strong>FLORES-200</strong></td>
-											<td>Transformer (Scratch)</td>
-											<td>15.0</td>
-											<td>37.2</td>
-											<td>38.5</td>
-											<td><strong>26.9</strong></td>
-											<td><strong>47.7</strong></td>
-											<td><strong>49.3</strong></td>
-										</tr>
-										<tr>
-											<td>NLLB-200 (Fine-tuned)</td>
-											<td><strong>15.2</strong></td>
-											<td><strong>38.1</strong></td>
-											<td><strong>39.4</strong></td>
-											<td>21.1</td>
-											<td>44.3</td>
-											<td>45.8</td>
-										</tr>
+								<tr>
+									<td rowspan="2"><strong>MeMaT (Medical Validation)</strong></td>
+									<td>Transformer (Scratch)</td>
+									<td>10.5</td>
+									<td>33.6</td>
+									<td>34.9</td>
+									<td>13.2</td>
+									<td>38.5</td>
+									<td>39.8</td>
+								</tr>
+								<tr>
+									<td>NLLB-200 (Fine-tuned)</td>
+									<td><strong>13.8</strong></td>
+									<td><strong>35.9</strong></td>
+									<td><strong>37.3</strong></td>
+									<td><strong>17.5</strong></td>
+									<td><strong>40.6</strong></td>
+									<td><strong>41.7</strong></td>
+								</tr>
 
-										<tr>
-											<td rowspan="2"><strong>MeMaT (Medical Validation)</strong></td>
-											<td>Transformer (Scratch)</td>
-											<td>10.5</td>
-											<td>33.6</td>
-											<td>34.9</td>
-											<td>13.2</td>
-											<td>38.5</td>
-											<td>39.8</td>
-										</tr>
-										<tr>
-											<td>NLLB-200 (Fine-tuned)</td>
-											<td><strong>13.8</strong></td>
-											<td><strong>35.9</strong></td>
-											<td><strong>37.3</strong></td>
-											<td><strong>17.5</strong></td>
-											<td><strong>40.6</strong></td>
-											<td><strong>41.7</strong></td>
-										</tr>
+								<tr>
+									<td rowspan="2"><strong>Blocker (Medical Test)</strong></td>
+									<td>Transformer (Scratch)</td>
+									<td><strong>12.9</strong></td>
+									<td><strong>31.2</strong></td>
+									<td><strong>32.8</strong></td>
+									<td><strong>14.4</strong></td>
+									<td><strong>35.1</strong></td>
+									<td><strong>36.5</strong></td>
+								</tr>
+								<tr>
+									<td>NLLB-200 (Fine-tuned)</td>
+									<td>2.1</td>
+									<td>25.4</td>
+									<td>26.9</td>
+									<td>5.8</td>
+									<td>29.7</td>
+									<td>30.8</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
-										<tr>
-											<td rowspan="2"><strong>Blocker (Medical Test)</strong></td>
-											<td>Transformer (Scratch)</td>
-											<td><strong>12.9</strong></td>
-											<td><strong>31.2</strong></td>
-											<td><strong>32.8</strong></td>
-											<td><strong>14.4</strong></td>
-											<td><strong>35.1</strong></td>
-											<td><strong>36.5</strong></td>
-										</tr>
-										<tr>
-											<td>NLLB-200 (Fine-tuned)</td>
-											<td>2.1</td>
-											<td>25.4</td>
-											<td>26.9</td>
-											<td>5.8</td>
-											<td>29.7</td>
-											<td>30.8</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+					<h3>Analysis</h3>
+					<p style="text-align: justify;">
+						Results reveal distinct strengths between the two baselines. The <strong>NLLB-200 model</strong> achieved
+						higher scores on general and validation datasets, reflecting its multilingual knowledge and cross-domain
+						generalization. In contrast, the <strong>Transformer trained from scratch</strong> performed significantly
+						better on the Blocker medical test set, indicating stronger domain-specific adaptation when trained solely on
+						in-domain data. Overall, both baselines provided essential benchmarks—showing that while multilingual
+						fine-tuning supports general performance, training from scratch can yield superior results in specialized
+						medical contexts.
+					</p>
 
-							<h4>Analysis</h4>
-							<p>Results reveal distinct strengths between the two baselines. The <strong>NLLB-200 model</strong> achieved higher scores on the general and validation datasets, reflecting its broad multilingual knowledge and ability to generalize across domains. 
-							In contrast, the <strong>Transformer trained from scratch</strong> performed significantly better on the Blocker medical test set, indicating stronger domain-specific adaptation when trained solely on in-domain data. 
-							Overall, both baselines provided essential benchmarks—demonstrating that while multilingual fine-tuning supports general performance, training from scratch can yield superior results in specialized medical contexts.</p>
+					<h2>Resources</h2>
+					<div style="display: flex; gap: 1em;">
+						<a href="documents/mkhmal024_Final_Paper.pdf" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View final paper">Final Paper</a>
+						<a href="https://arxiv.org/abs/2301.10418" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="NLLB Paper">NLLB Paper</a>
+						<a href="https://github.com/facebookresearch/fairseq" class="button primary icon brands fa-github" target="_blank" style="flex: 1;" alt="View code on GitHub">GitHub</a>
+					</div>
 
-							<p>For more detail on architecture, training parameters, and evaluation metrics, please refer to the <a href="#">final paper</a>.</p>
-						</div>
-					</section>
-			</div>
+					<h2>Contact</h2>
+					<p style="text-align: justify;">
+						Contact Malibongwe Makhonza at <a href="mailto:mkhmal024@myuct.ac.za">mkhmal024@myuct.ac.za</a><br>
+						Contact project supervisor Francois Meyer at <a href="mailto:francois.meyer@uct.ac.za">francois.meyer@uct.ac.za</a>
+					</p>
+
+				</div>
+			</section>
+		</div>
 
 		<!-- Footer -->
-			<footer id="footer" class="wrapper alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; isiXhosa Medical MT. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+		<footer id="footer" class="wrapper alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; IsiXhosa Medical MT. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
