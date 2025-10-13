@@ -81,22 +81,22 @@
 				<div class="inner">
 					<h2>Methodology</h2>
 					<p>Our project explores and compares several methods for developing an English-isiXhosa medical machine translation model. Each approach is detailed on its own page.</p>
-					<div class="features">
-						<section style="border: none;">
+					<div class="features" style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
+						<section style="border: none; flex: 1; margin: 0 1em;">
 							<span class="icon solid major fa-code"></span>
 							<h3>Baseline Models</h3>
 							<ul class="actions">
 								<li><a href="baseline.html" class="button">Learn more</a></li>
 							</ul>
 						</section>
-						<section style="border: none;">
+						<section style="border: none; flex: 1; margin: 0 1em;">
 							<span class="icon solid major fa-sync-alt"></span>
 							<h3>Back-Translation</h3>
 							<ul class="actions">
 								<li><a href="backtrans.html" class="button">Learn more</a></li>
 							</ul>
-						</section style="border: none;">
-						<section style="border: none;">
+						</section>
+						<section style="border: none; flex: 1; margin: 0 1em;">
 							<span class="icon solid major fa-language"></span>
 							<h3>DALI</h3>
 							<ul class="actions">
@@ -112,7 +112,9 @@
 			<section id="results" class="wrapper style3 fade-up">
 				<div class="inner">
 					<h2>Results</h2>
-					<p>This section will present the results of the different models, comparing their performance using BLEU, chrF, chrF++, and the health term error rate.</p>
+					<p>The following graph shows the BLEU score results of all of our top performing models on the Blocker evaluation set. This is done to show how
+						each approach compares to the others.
+					</p>
 				</div>
 			</section>
 
