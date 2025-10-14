@@ -55,7 +55,6 @@
 							<h2>Results</h2>
 							<p>The models were evaluated using chrF++, BLEU, and ACoM metrics. While chrF++ and BLEU focus on word-level overlap, ACoM (AfriCOMET) is a semantic metric designed to evaluate meaning preservation, which is critical in a medical context. The table below shows the Blocker test set results for models fine-tuned on forward- and back-translated data compared to their respective base models and team member's models.</p>
 							
-							<!-- UPDATED TABLE SECTION -->
 							<div class="table-wrapper">
 								<table>
 									<thead>
@@ -182,7 +181,24 @@
 							<p>For the <strong>600M parameter model</strong>, forward-translation (English → isiXhosa) shows modest but consistent improvements in chrF++ and BLEU scores, outperforming the DALI approach. The gains from back-translation (isiXhosa → English) are more substantial, with significant improvements across nearly all metrics.</p>
 							<p>The <strong>1.3B parameter model</strong> results highlight the strength of back-translation even further. While forward-translation gains did not scale with the increased model size, the back-translation model continued to show strong improvements. Its chrF++ scores began to approach those of commercial translation systems, demonstrating the effectiveness of this technique in a low-resource medical context.</p>
 
-							<p>For a full breakdown of all results and a deeper dive into related works, please see our <a href="#">final research paper</a> and the accompanying <a href="#">literature review</a>.</p>
+							<hr />
+
+							<h2>Conclusion</h2>
+							<p>This project successfully demonstrated that back-translation is an effective technique for improving English-isiXhosa medical machine translation, particularly in a low-resource setting. The results show that fine-tuning large-scale models like NLLB on back-translated synthetic data yields significant performance gains, especially for the isiXhosa-to-English translation direction. While commercial models still lead in performance, the back-translation approach closes the gap and establishes a strong baseline for future work in this critical domain.</p>
+
+							<h2>Resources</h2>
+								<div style="display: flex; gap: 1em;">
+									<a href="documents/backtrans.pdf" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View paper">Final Paper</a>
+									<a href="documents/litreview.pdf" class="button primary icon solid fa-file" target="_blank" style="flex: 1;" alt="View literature review">Literature Review</a>
+									<a href="https://github.com/nickmatz/MedTranslate_back-trans" class="button primary icon brands fa-github" target="_blank" style="flex: 1;" alt="View code on GitHub">GitHub</a>
+								</div>
+							
+							<hr />
+							
+							<h2>Contact Details</h2>
+							<p>Contact Nick Matzopoulos at <a href="mailto:mtznic006@myuct.ac.za">mtznic006@myuct.ac.za</a><br />
+							Contact the project supervisor Francois Meyer at <a href="mailto:francois.meyer@uct.ac.za">francois.meyer@uct.ac.za</a></p>
+
 						</div>
 					</section>
 
